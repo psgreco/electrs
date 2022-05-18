@@ -27,6 +27,7 @@ use {
     elements::{
         confidential::{Asset, Nonce, Value},
         encode, AssetId,
+        secp256k1_zkp::{RangeProof, SurjectionProof},
     },
 };
 
@@ -438,9 +439,9 @@ impl From<Utxo> for UtxoValue {
             surjection_proof: utxo
                 .witness
                 .surjection_proof
-                .map_or(vec![], |p| p.serialize()),
+                .map_or(vec![], |p| SurjectionProof::serialize(&p)),
             #[cfg(feature = "liquid")]
-            range_proof: utxo.witness.rangeproof.map_or(vec![], |p| p.serialize()),
+            range_proof: utxo.witness.rangeproof.map_or(vec![], |p| RangeProof::serialize(&p)),
         }
     }
 }

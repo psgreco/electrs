@@ -72,7 +72,8 @@ codegen-units = 1
 git = "https://github.com/Blockstream/rust-electrum-client"
 rev = "d3792352992a539afffbe11501d1aff9fd5b919d" # add-peer branch
 
-# needed for https://github.com/ElementsProject/rust-elements/pull/98 until a new release is made
+# needed to workaround OversizedVectorAllocation errors
+# as well as for https://github.com/ElementsProject/rust-elements/pull/98 until a new release is made
 [patch.crates-io.elements]
-git = "https://github.com/ElementsProject/rust-elements"
-rev = "d988bd7ed9cf539b8fea0da042efa5a4e1eef86f"
+git = "https://github.com/sanket1729/rust-elements"
+rev = "6a19c9b08754afa26e1c3415ff097ab1f7f4904c"
